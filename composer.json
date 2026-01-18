@@ -1,0 +1,37 @@
+{
+    "name": "ssword-dev/student-database-system",
+    "type": "project",
+    "require-dev": {
+        "fakerphp/faker": "^1.24",
+        "pestphp/pest": "^4.3"
+    },
+    "scripts": {
+        "test": "php ./vendor/bin/pest"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Ssword-dev",
+            "email": "ssword.dev@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "lazervel/path": "^1.0",
+        "symfony/mime": "^8.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

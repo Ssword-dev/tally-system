@@ -1,0 +1,30 @@
+:root {
+  /* base surfaces */
+  --palette-color-background: oklch(97% 0.01 95);
+  --palette-color-surface: oklch(96% 0.01 95);
+  --palette-color-muted: oklch(92% 0.01 95);
+
+  /* text */
+  --palette-color-text: oklch(32% 0.01 95);
+  --palette-color-text-muted: oklch(55% 0.005 95);
+
+  /* borders & lines */
+  --palette-color-border: oklch(78% 0.005 95);
+  --palette-color-border-muted: oklch(85% 0.005 95);
+
+  /* accents (same hue/chroma as dark, lighter tone) */
+  --palette-color-accent: oklch(78% 0.15 270);
+  --palette-color-accent-strong: oklch(72% 0.28 275);
+
+  /* semantic */
+  --palette-color-primary: oklch(64% 0.1 155);
+  --palette-color-secondary: oklch(64% 0.1 335);
+
+  --palette-color-danger: oklch(62% 0.05 30);
+  --palette-color-warning: oklch(72% 0.05 100);
+  --palette-color-success: oklch(62% 0.05 160);
+  --palette-color-info: oklch(62% 0.05 260);
+
+  /* shadows */
+  --palette-color-shadow: oklch(82% 0.01 95);
+}

@@ -1,0 +1,18 @@
+<?php
+
+$dbInit = file_get_contents(__DIR__ . "/database/schema/schema.sql");
+;
+
+$conn = mysqli_connect('localhost', 'root', '');
+
+if (!$conn) {
+    die("Failed to connect to wampserver mysql. did you forget to turn on wampserver64?");
+}
+
+$success = $conn->multi_query($dbInit);
+
+if (!$success) {
+    die("Failed to initialize database.");
+}
+
+$conn->close();

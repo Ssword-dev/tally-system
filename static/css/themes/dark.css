@@ -1,0 +1,37 @@
+:root {
+  /* core surfaces */
+  --palette-color-background: oklch(11% 0.015 260);
+  /* deep graphite */
+  --palette-color-surface: oklch(16% 0.015 260);
+  /* elevated surface */
+  --palette-color-muted: oklch(22% 0.01 260);
+  /* subtle hover surface */
+
+  /* text */
+  --palette-color-text: oklch(0.94 0.01 260);
+  /* off-white */
+  --palette-color-text-muted: oklch(0.72 0.01 260);
+  /* understated gray */
+
+  /* accents restrained like vercel's */
+  --palette-color-accent: oklch(0.78 0.09 265);
+  /* cool violet accent */
+  --palette-color-accent-strong: oklch(0.72 0.14 270);
+  /* stronger, still tasteful */
+
+  /* borders */
+  --palette-color-border: oklch(0.4 0.005 260);
+  --palette-color-border-muted: oklch(0.3 0.005 260);
+
+  /* semantic colors – balanced, not too saturated */
+  --palette-color-primary: oklch(0.8 0.08 240);
+  --palette-color-secondary: oklch(0.8 0.08 330);
+
+  --palette-color-danger: oklch(0.7 0.05 25);
+  --palette-color-warning: oklch(0.72 0.05 90);
+  --palette-color-success: oklch(0.72 0.06 150);
+  --palette-color-info: oklch(0.75 0.06 260);
+
+  /* shadows — subtle and natural */
+  --palette-color-shadow: oklch(0.28 0.01 260);
+}

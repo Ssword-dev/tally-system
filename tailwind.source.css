@@ -1,0 +1,95 @@
+@source "./**/*.php";
+@import "tailwindcss";
+
+:root {
+  --accessibility-contrast: 100%;
+}
+
+@media (prefers-contrast: less) {
+  :root {
+    --accessibility-contrast: 90%;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --accessibility-contrast: 110%;
+  }
+}
+
+* {
+  filter: contrast(var(--accessibility-contrast));
+}
+
+@layer base {
+  body {
+    width: 100vw;
+    min-height: 100vh;
+    color: var(--palette-color-text);
+    background: var(--palette-color-background);
+    transition: color 0.5s, background-color 0.5s;
+    line-height: 1.6;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    font-size: 15px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply bg-background;
+  }
+
+  * {
+    filter: contrast(var(--accessibility-contrast));
+  }
+}
+
+/* anti scrollbar measures. */
+
+#app {
+  height: 100vh;
+  width: 100%;
+}
+
+@theme inline {
+  --color-background: var(--palette-color-background);
+  --color-surface: var(--palette-color-surface);
+  --color-muted: var(--palette-color-muted);
+  --color-text: var(--palette-color-text);
+  --color-text-muted: var(--palette-color-text-muted);
+  --color-accent: var(--palette-color-accent);
+  --color-accent-strong: var(--palette-color-accent-strong);
+  --color-border: var(--palette-color-border);
+  --color-border-muted: var(--palette-color-border-muted);
+  --color-primary: var(--palette-color-primary);
+  --color-secondary: var(--palette-color-secondary);
+  --color-danger: var(--palette-color-danger);
+  --color-warning: var(--palette-color-warning);
+  --color-success: var(--palette-color-success);
+  --color-info: var(--palette-color-info);
+  --color-shadow: var(--palette-color-shadow);
+}
+
+@utility no-scrollbar {
+  & {
+    scrollbar-width: none;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+html,
+body {
+  @apply no-scrollbar;
+}
+
+/* 
+for removal of the background chrome applies when auto filling the inputs.
+this just tells it to apply the changes in 11 days.
+ */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 950400s, color 0s 950400s !important;
+}

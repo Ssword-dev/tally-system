@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+    # Enable RewriteEngine
+    RewriteEngine On
+
+    # Set the base directory for rewrites
+    RewriteBase /
+
+    # Exclude static files and directories from rewriting
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Remove index.php from URLs if present
+    RewriteCond %{REQUEST_URI} !^/index\.php
+    RewriteRule ^(.*)index\.php/?(.*)$ /$1$2 [L,R=301]
+
+    # Rewrite all requests to index.php with the original URI
+    RewriteRule ^(.*)$ /index.php/$1 [L]
+</IfModule>
+
+# Handle cases where mod_rewrite is not available
+<IfModule !mod_rewrite.c>
+    ErrorDocument 404 /index.php
+</IfModule>

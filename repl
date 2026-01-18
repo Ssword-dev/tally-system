@@ -1,0 +1,16 @@
+<?php
+
+require './bootstrap/app.php';
+
+function executeCode($code)
+{
+    return eval ($code);
+}
+
+while (true) {
+    echo "\nPHP (" . PHP_VERSION . ") REPL CLI >";
+    $input = trim(fgets(STDIN));
+
+    // execute the input code.
+    executeCode($input);
+}
