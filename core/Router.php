@@ -8,21 +8,21 @@ abstract class BaseClause
 }
 
 /**
- * @template T of BaseDialect
+ * @template T of BaseQueryable
  */
 abstract class BaseStatement
 {
     /**
      * @var T
      */
-    public BaseDialect $dialect;
+    public BaseQueryable $queryable;
 
     /**
      * @param T $dialect
      */
-    public function __construct($dialect)
+    public function __construct($queryable)
     {
-        $this->dialect = $dialect;
+        $this->queryable = $queryable;
     }
 
     /**
@@ -30,12 +30,12 @@ abstract class BaseStatement
      */
     public function endStatement()
     {
-        $this->dialect->statements[] = $this;
-        return $this->dialect;
+        $this->queryable->statements[] = $this;
+        return $this->queryable;
     }
 }
 
-abstract class BaseDialect
+abstract class BaseQueryable
 {
     /**
      * @var BaseStatement[]
@@ -46,6 +46,4 @@ abstract class BaseDialect
     {
         $this->statements = [];
     }
-
-    abstract public function toSql();
 }
