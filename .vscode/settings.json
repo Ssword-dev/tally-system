@@ -4,6 +4,9 @@
   "[php]": {
     "editor.defaultFormatter": "DEVSENSE.phptools-vscode"
   },
+  "files.associations": {
+    "*.template": "php"
+  },
   "launch": {
     "version": "0.2.0",
     "configurations": [
