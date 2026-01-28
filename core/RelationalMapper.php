@@ -3,9 +3,31 @@
 
 namespace Core;
 
+trait HasClauses
+{
+    private array $clauses = []; // {cls: Clauses[]}
+
+    public function addClause(BaseClause $clause)
+    {
+        $this->clauses[$clause::class] ??= [];
+        $this->clauses[$clause::class][] = $clause;
+        return $clause;
+    }
+
+    public function getClauses(): array
+    {
+        return array_merge(...array_values($this->clauses));
+    }
+
+
+    public function getClausesOfType($clauseType)
+    {
+        return $this->clauses[$clauseType] ?? [];
+    }
+}
+
 abstract class BaseClause
 {
-
 }
 
 /**
@@ -13,26 +35,8 @@ abstract class BaseClause
  */
 abstract class BaseStatement
 {
-    /**
-     * @var T
-     */
-    public BaseQueryable $queryable;
-
-    /**
-     * @param T $dialect
-     */
-    public function __construct($queryable)
+    public function __construct()
     {
-        $this->queryable = $queryable;
-    }
-
-    /**
-     * @return T
-     */
-    public function endStatement()
-    {
-        $this->queryable->statements[] = $this;
-        return $this->queryable;
     }
 }
 
@@ -47,4 +51,37 @@ abstract class BaseQueryable
     {
         $this->statements = [];
     }
+}
+
+final class SelectStatement extends BaseStatement
+{
+    public $fromTable;
+
+    public function from(string $table)
+    {
+        $this->fromTable = $table;
+        return $this;
+    }
+
+    public function join()
+    {
+    }
+}
+
+// Select Statement Clauses.
+// Join Clause.
+final class JoinClause extends BaseClause
+{
+    use HasClauses;
+
+    public function on()
+    {
+        return $this->addClause(new JoinOnSubclause());
+    }
+}
+
+// Join Subclauses.
+final class JoinOnSubclause extends BaseClause
+{
+
 }
